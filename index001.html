@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Family Chef Master</title>
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+	<link rel="stylesheet" href="css/main.css">
+	<script>
+		function allowDrop(ev)
+		{
+			ev.preventDefault();
+		}
+
+		function drag(ev)
+		{
+			ev.dataTransfer.setData("Text",ev.target.id);
+		}
+
+		function drop(ev)
+		{
+			ev.preventDefault();
+			var data=ev.dataTransfer.getData("Text");
+			ev.target.appendChild(document.getElementById(data));
+		}
+	</script>
+</head>
+<body>
+	<div ng-app="FamChefMaster" ng-controller="MainController">
+		<div id="leftPanel">
+			<img src="http://www.w3schools.com/html/img_w3slogo.gif" draggable="true" ondragstart="drag(event)" id="drag1" width="88" height="31">
+		</div>
+		<div id="rightPanel">
+			<div id="container01" class="day sunday">
+				<div id="meal01" class="meal breakfast" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+				<div id="meal02" class="meal lunch" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+				<div id="meal03" class="meal supper" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+			</div>
+			<div id="container02" class="day monday">
+				<div id="meal04" class="meal breakfast" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+				<div id="meal05" class="meal lunch" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+				<div id="meal06" class="meal supper" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+			</div>
+			<div id="container03" class="day tuesday">
+				<div id="meal07" class="meal breakfast" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+				<div id="meal08" class="meal lunch" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+				<div id="meal09" class="meal supper" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+			</div>
+			<div id="container04" class="day wednesday">
+				<div id="meal10" class="meal breakfast" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+				<div id="meal11" class="meal lunch" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+				<div id="meal12" class="meal supper" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+			</div>
+			<div id="container05" class="day thursday">
+				<div id="meal13" class="meal breakfast" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+				<div id="meal14" class="meal lunch" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+				<div id="meal16" class="meal supper" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+			</div>
+			<div id="container06" class="day friday">
+				<div id="meal16" class="meal breakfast" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+				<div id="meal17" class="meal lunch" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+				<div id="meal06" class="meal supper" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+			</div>
+			<div id="container07" class="day sabbath">
+				<div id="meal18" class="meal breakfast" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+				<div id="meal19" class="meal lunch" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+				<div id="meal20" class="meal supper" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
