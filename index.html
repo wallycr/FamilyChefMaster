@@ -4,43 +4,18 @@
 	<meta charset="UTF-8">
 	<title>Family Chef Master</title>
 	<script type="text/javascript" src="js/angular.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/famchef-angular.js"></script>
+	<script type="text/javascript" src="js/famchef-functions.js"></script>
+	<!--<script type="text/javascript" src="js/bootstrap.min.js"></script>-->
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/bootstrap-responsive.min.css">
 	<link rel="stylesheet" href="css/main.css">
-	<script>
-		function allowDrop(ev)
-		{
-			ev.preventDefault();
-		}
-
-		function drag(ev)
-		{
-			ev.dataTransfer.setData("Text",ev.target.id);
-		}
-
-		function drop(ev)
-		{
-			ev.preventDefault();
-			var data=ev.dataTransfer.getData("Text");
-			ev.target.appendChild(document.getElementById(data));
-		}
-
-		function handleDragStart(ev) {
-		  this.style.opacity = '0.4';  // this / e.target is the source node.
-		}
-
-		var cols = document.querySelectorAll('[draggable]');
-		[].forEach.call(cols, function(col) {
-		  col.addEventListener('dragstart', handleDragStart, false);
-		});		
-	</script>
 </head>
 <body>
 	<div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand" href="../">Bootswatch</a>
+          <a class="navbar-brand" href="../">Menu</a>
           <button data-target="#navbar-main" data-toggle="collapse" type="button" class="navbar-toggle">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -50,11 +25,11 @@
         <div id="navbar-main" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="dropdown">
-              <a id="themes" href="#" data-toggle="dropdown" class="dropdown-toggle">Themes <span class="caret"></span></a>
+              <a id="themes" href="#" data-toggle="dropdown" class="dropdown-toggle">Option <span class="caret"></span></a>
               <ul aria-labelledby="themes" class="dropdown-menu">
-                <li><a href="../default/">Default</a></li>
+                <li><a href="../default/">Options</a></li>
                 <li class="divider"></li>
-                <li><a href="../amelia/">Amelia</a></li>
+                <li><a href="../amelia/">Options</a></li>
 
               </ul>
             </li>
@@ -67,18 +42,18 @@
             <li class="dropdown">
               <a id="download" href="#" data-toggle="dropdown" class="dropdown-toggle">Download <span class="caret"></span></a>
               <ul aria-labelledby="download" class="dropdown-menu">
-                <li><a href="./bootstrap.min.css">bootstrap.min.css</a></li>
-                <li><a href="./bootstrap.css">bootstrap.css</a></li>
+                <li><a href="#">Option</a></li>
+                <li><a href="#">Option</a></li>
                 <li class="divider"></li>
-                <li><a href="./variables.less">variables.less</a></li>
-                <li><a href="./bootswatch.less">bootswatch.less</a></li>
+                <li><a href="#">Option</a></li>
+                <li><a href="#">Option</a></li>
               </ul>
             </li>
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
-            <li><a target="_blank" href="http://builtwithbootstrap.com/">Built With Bootstrap</a></li>
-            <li><a target="_blank" href="https://wrapbootstrap.com/?ref=bsw">WrapBootstrap</a></li>
+            <li><a target="_blank" href="#">Options</a></li>
+            <li><a target="_blank" href="#">Options</a></li>
           </ul>
 
         </div>
@@ -89,7 +64,7 @@
 	        <div class="row">
 	          <div class="col-lg-6">
 	            <h1>Family Chef Master</h1>
-	            <p class="lead">Flat and modern</p>
+	            <p class="lead">App for everyday meals</p>
 	          </div>
 	        </div>
 	      </div>
@@ -98,277 +73,69 @@
 					<div class="col-lg-4">
 				        <div class="bs-component">
 				          <ul class="list-group" ondrop="drop(event)" ondragover="allowDrop(event)">
-				            <li class="list-group-item" draggable="true" ondragstart="drag(event)" id="drag1">
-				              <span class="badge">14</span>
-				              Gallo Pinto
-				            </li>
-				            <li class="list-group-item" draggable="true" ondragstart="drag(event)" id="drag2">
-				              <span class="badge">2</span>
-				              Sopa de fideos
-				            </li>
-				            <li class="list-group-item" draggable="true" ondragstart="drag(event)" id="drag3">
-				              <span class="badge">1</span>
-				              Pizza
+				            <li ng-repeat="meal in meals" class="list-group-item" draggable="true" ondragstart="drag(event)" id="drag{{$index}}">
+				              <span class="badge">{{meal.calories}}</span>
+				              	{{meal.name}}
 				            </li>
 				          </ul>
 				        </div>
 				    </div>
 					<div id="rightPanel" class="col-lg-8">
-						<div class="row day sunday">
+						<div ng-repeat="day in days" class="row day {{day.name}}">
+							<h4>{{day.name}}</h4> 
 							<div class="col-lg-4">
-								<div id="meal01" class="meal breakfast panel panel-info" ondrop="drop(event)" ondragover="allowDrop(event)">
+								<div class="meal breakfast panel panel-info">
 									<div class="panel-heading">
 										<h3 class="panel-title">
-											Desayuno
+											{{day.breakfastName}}
 										</h3>
 									</div>
-									<div class="panel-body"></div>
+									<div id="{{day.name}}meal01" class="panel-body" ondragover="handleDragOver(event)" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+									<div class="panel-footer">
+										<div class="diners">5</div>
+										<div class="calories"></div>
+										<div class="buttons">
+											<button class="btn btn-info btn-xs" type="button">Detalles</button>
+										</div>
+									</div>
 								</div>
 							</div>
 							<div class="col-lg-4">
-								<div id="meal02" class="meal lunch panel panel-info" ondrop="drop(event)" ondragover="allowDrop(event)">
+								<div class="meal lunch panel panel-info">
 									<div class="panel-heading">
 										<h3 class="panel-title">
-											Almuerzo
+											{{day.lunchName}}
 										</h3>
 									</div>
-									<div class="panel-body">
-										
-									</div>					
+									<div id="{{day.name}}meal02" class="panel-body" ondragover="handleDragOver(event)" ondrop="drop(event)" ondragover="allowDrop(event)"></div>	
+									<div class="panel-footer">
+										<div class="diners">5</div>
+										<div class="calories"></div>
+										<div class="buttons">
+											<button class="btn btn-info btn-xs" type="button">Detalles</button>
+										</div>
+									</div>
 								</div>
 							</div>
 							<div class="col-lg-4">
-								<div id="meal03" class="meal supper panel panel-info" ondrop="drop(event)" ondragover="allowDrop(event)">
+								<div class="meal supper panel panel-info">
 									<div class="panel-heading">
 										<h3 class="panel-title">
-											Cena
+											{{day.supperName}}
 										</h3>
 									</div>
-									<div class="panel-body">
-										
-									</div>					
-								</div>
-							</div>
-						</div>
-						<div class="row day monday">
-							<div class="col-lg-4">
-								<div id="meal01" class="meal breakfast panel panel-info" ondrop="drop(event)" ondragover="allowDrop(event)">
-									<div class="panel-heading">
-										<h3 class="panel-title">
-											Desayuno
-										</h3>
+									<div id="{{day.name}}meal03" class="panel-body" ondragover="handleDragOver(event)" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+									<div class="panel-footer">
+										<div class="diners">5</div>
+										<div class="calories"></div>
+										<div class="buttons">
+											<button class="btn btn-info btn-xs" type="button">Detalles</button>
+										</div>
 									</div>
-									<div class="panel-body"></div>
-								</div>
-							</div>
-							<div class="col-lg-4">
-								<div id="meal02" class="meal lunch panel panel-info" ondrop="drop(event)" ondragover="allowDrop(event)">
-									<div class="panel-heading">
-										<h3 class="panel-title">
-											Almuerzo
-										</h3>
-									</div>
-									<div class="panel-body">
-										
-									</div>					
-								</div>
-							</div>
-							<div class="col-lg-4">
-								<div id="meal03" class="meal supper panel panel-info" ondrop="drop(event)" ondragover="allowDrop(event)">
-									<div class="panel-heading">
-										<h3 class="panel-title">
-											Cena
-										</h3>
-									</div>
-									<div class="panel-body">
-										
-									</div>					
-								</div>
-							</div>
-						</div>
-						<div class="row day tuesday">
-							<div class="col-lg-4">
-								<div id="meal01" class="meal breakfast panel panel-info" ondrop="drop(event)" ondragover="allowDrop(event)">
-									<div class="panel-heading">
-										<h3 class="panel-title">
-											Desayuno
-										</h3>
-									</div>
-									<div class="panel-body"></div>
-								</div>
-							</div>
-							<div class="col-lg-4">
-								<div id="meal02" class="meal lunch panel panel-info" ondrop="drop(event)" ondragover="allowDrop(event)">
-									<div class="panel-heading">
-										<h3 class="panel-title">
-											Almuerzo
-										</h3>
-									</div>
-									<div class="panel-body">
-										
-									</div>					
-								</div>
-							</div>
-							<div class="col-lg-4">
-								<div id="meal03" class="meal supper panel panel-info" ondrop="drop(event)" ondragover="allowDrop(event)">
-									<div class="panel-heading">
-										<h3 class="panel-title">
-											Cena
-										</h3>
-									</div>
-									<div class="panel-body">
-										
-									</div>					
-								</div>
-							</div>
-						</div>
-						<div class="row day wednesday">
-							<div class="col-lg-4">
-								<div id="meal01" class="meal breakfast panel panel-info" ondrop="drop(event)" ondragover="allowDrop(event)">
-									<div class="panel-heading">
-										<h3 class="panel-title">
-											Desayuno
-										</h3>
-									</div>
-									<div class="panel-body"></div>
-								</div>
-							</div>
-							<div class="col-lg-4">
-								<div id="meal02" class="meal lunch panel panel-info" ondrop="drop(event)" ondragover="allowDrop(event)">
-									<div class="panel-heading">
-										<h3 class="panel-title">
-											Almuerzo
-										</h3>
-									</div>
-									<div class="panel-body">
-										
-									</div>					
-								</div>
-							</div>
-							<div class="col-lg-4">
-								<div id="meal03" class="meal supper panel panel-info" ondrop="drop(event)" ondragover="allowDrop(event)">
-									<div class="panel-heading">
-										<h3 class="panel-title">
-											Cena
-										</h3>
-									</div>
-									<div class="panel-body">
-										
-									</div>					
-								</div>
-							</div>
-						</div>
-						<div class="row day thursday">
-							<div class="col-lg-4">
-								<div id="meal01" class="meal breakfast panel panel-info" ondrop="drop(event)" ondragover="allowDrop(event)">
-									<div class="panel-heading">
-										<h3 class="panel-title">
-											Desayuno
-										</h3>
-									</div>
-									<div class="panel-body"></div>
-								</div>
-							</div>
-							<div class="col-lg-4">
-								<div id="meal02" class="meal lunch panel panel-info" ondrop="drop(event)" ondragover="allowDrop(event)">
-									<div class="panel-heading">
-										<h3 class="panel-title">
-											Almuerzo
-										</h3>
-									</div>
-									<div class="panel-body">
-										
-									</div>					
-								</div>
-							</div>
-							<div class="col-lg-4">
-								<div id="meal03" class="meal supper panel panel-info" ondrop="drop(event)" ondragover="allowDrop(event)">
-									<div class="panel-heading">
-										<h3 class="panel-title">
-											Cena
-										</h3>
-									</div>
-									<div class="panel-body">
-										
-									</div>					
-								</div>
-							</div>
-						</div>
-						<div class="row day friday">
-							<div class="col-lg-4">
-								<div id="meal01" class="meal breakfast panel panel-info" ondrop="drop(event)" ondragover="allowDrop(event)">
-									<div class="panel-heading">
-										<h3 class="panel-title">
-											Desayuno
-										</h3>
-									</div>
-									<div class="panel-body"></div>
-								</div>
-							</div>
-							<div class="col-lg-4">
-								<div id="meal02" class="meal lunch panel panel-info" ondrop="drop(event)" ondragover="allowDrop(event)">
-									<div class="panel-heading">
-										<h3 class="panel-title">
-											Almuerzo
-										</h3>
-									</div>
-									<div class="panel-body">
-										
-									</div>					
-								</div>
-							</div>
-							<div class="col-lg-4">
-								<div id="meal03" class="meal supper panel panel-info" ondrop="drop(event)" ondragover="allowDrop(event)">
-									<div class="panel-heading">
-										<h3 class="panel-title">
-											Cena
-										</h3>
-									</div>
-									<div class="panel-body">
-										
-									</div>					
-								</div>
-							</div>
-						</div>
-						<div class="row day saturday">
-							<div class="col-lg-4">
-								<div id="meal01" class="meal breakfast panel panel-info" ondrop="drop(event)" ondragover="allowDrop(event)">
-									<div class="panel-heading">
-										<h3 class="panel-title">
-											Desayuno
-										</h3>
-									</div>
-									<div class="panel-body"></div>
-								</div>
-							</div>
-							<div class="col-lg-4">
-								<div id="meal02" class="meal lunch panel panel-info" ondrop="drop(event)" ondragover="allowDrop(event)">
-									<div class="panel-heading">
-										<h3 class="panel-title">
-											Almuerzo
-										</h3>
-									</div>
-									<div class="panel-body">
-										
-									</div>					
-								</div>
-							</div>
-							<div class="col-lg-4">
-								<div id="meal03" class="meal supper panel panel-info" ondrop="drop(event)" ondragover="allowDrop(event)">
-									<div class="panel-heading">
-										<h3 class="panel-title">
-											Cena
-										</h3>
-									</div>
-									<div class="panel-body">
-										
-									</div>					
 								</div>
 							</div>
 						</div>
 					</div>
-
-
 				</div>
 			</div>
 	</div>

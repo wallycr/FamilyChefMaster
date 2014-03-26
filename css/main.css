@@ -6,3 +6,11 @@
 }
 .day {
 }
+.buttons, .calories, .diners {
+    display: table-cell;
+    padding: 0 2px;
+}
+.meal .panel-footer {}
+.panel-body.over {
+  border: 2px dashed #000;
+}
