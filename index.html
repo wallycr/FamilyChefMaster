@@ -3,9 +3,9 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Family Chef Master</title>
+	<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 	<script type="text/javascript" src="js/angular.min.js"></script>
 	<script type="text/javascript" src="js/famchef-angular.js"></script>
-	<script type="text/javascript" src="js/famchef-functions.js"></script>
 	<!--<script type="text/javascript" src="js/bootstrap.min.js"></script>-->
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/bootstrap-responsive.min.css">
@@ -72,8 +72,8 @@
 				<div class="row">
 					<div class="col-lg-4">
 				        <div class="bs-component">
-				          <ul class="list-group" ondrop="drop(event)" ondragover="allowDrop(event)">
-				            <li ng-repeat="meal in meals" class="list-group-item" draggable="true" ondragstart="drag(event)" id="drag{{$index}}">
+				          <ul class="list-group">
+				            <li ng-repeat="meal in meals" class="list-group-item" draggable="true" ondragstart="drag(event)"  id="drag{{$index}}">
 				              <span class="badge">{{meal.calories}}</span>
 				              	{{meal.name}}
 				            </li>
@@ -90,7 +90,7 @@
 											{{day.breakfastName}}
 										</h3>
 									</div>
-									<div id="{{day.name}}meal01" class="panel-body" ondragover="handleDragOver(event)" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+									<div id="{{day.name}}meal01" class="panel-body"></div>
 									<div class="panel-footer">
 										<div class="diners">5</div>
 										<div class="calories"></div>
@@ -107,7 +107,7 @@
 											{{day.lunchName}}
 										</h3>
 									</div>
-									<div id="{{day.name}}meal02" class="panel-body" ondragover="handleDragOver(event)" ondrop="drop(event)" ondragover="allowDrop(event)"></div>	
+									<div id="{{day.name}}meal02" class="panel-body"></div>	
 									<div class="panel-footer">
 										<div class="diners">5</div>
 										<div class="calories"></div>
@@ -124,7 +124,7 @@
 											{{day.supperName}}
 										</h3>
 									</div>
-									<div id="{{day.name}}meal03" class="panel-body" ondragover="handleDragOver(event)" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+									<div id="{{day.name}}meal03" class="panel-body"></div>
 									<div class="panel-footer">
 										<div class="diners">5</div>
 										<div class="calories"></div>
@@ -139,5 +139,6 @@
 				</div>
 			</div>
 	</div>
+	<script type="text/javascript" src="js/famchef-functions.js"></script>
 </body>
 </html>
