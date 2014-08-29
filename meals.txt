@@ -1,0 +1,12 @@
+Breakfast
+	Granola
+	Pancakes
+	Toasted bread
+	Pinto
+	Aminie
+	Dry cereal
+	Mush/Oats
+	Corn Flakes
+	Eggs with something
+	Tortilla
+	Sandwich

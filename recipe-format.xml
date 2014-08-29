@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<recipe-dim>
+	<head>
+		<!-- name of the author - Optional -->
+		<meta name="author" content="Name of Author"/>
+		<!-- email of the author - Optional -->
+		<meta name="email" content="Email of Author"/>
+		<!-- web page of this recipe, if available - Optional -->
+		<meta name="url" content="http://www.url-of-recipe.com"/>
+		<!-- date when this recipe was initially published - dd/mm/YYYY -->
+		<meta name="published" content="dd/mm/YYYY"/>
+		<!-- date of the last modification, "dd/mm/YYYY" -->
+		<meta name="modified" content="dd/mm/YYYY"/>
+		<!-- copyright of this recipe -->
+		<meta name="copyright" content="Copyrights"/>
+		<!-- license of this recipe -->
+		<meta name="license" content="License"/>
+		<!-- locale information of this recipe -->
+		<meta name="locale" content="de-DE"/>
+		<!-- Country or Region of origin -->
+		<meta name="origin" content="Origin"/>
+		<!-- Type - [recipe]/cookbook/grocery-list/meal -->
+		<meta name="type" content="recipe"/>
+		<!-- Description -->
+		<meta name="description" content="Description or recipe"/>
+	</head>
+	<recipe id="1">
+		<title>Gallo Pinto</title>
+		<description>Gallo Pinto a lo tico</description>
+		<!-- number of servings -->
+		<servings unit="persons">4</servings>
+		<!-- preparation time (hh:mm:ss) -->
+		<preparation-time>0:20:00</preparation-time>
+		<!-- comma-separated list of tags - the tags for each locale are predefined, but you can add your own -->
+		<tags locale="es">gallo pinto, arroz, frijoles, desayuno, tipico, costa rica </tags>
+		<media>
+			<images>
+				<!-- pictures(s) of this recipe -->
+				<img id="1" src="http://www.gallopinto.com/gallopinto.jpg" alt="Gallo Pinto" title="Gallo Pinto"/>
+			</images>
+			<videos>
+				<!-- video(s) of this recipe -->
+				<img id="1" src="http://www.gallopinto.com/gallopinto.jpg" alt="Gallo Pinto" title="Gallo Pinto"/>
+			</videos>
+		</media>
+		<ingredients id="1" title="Lista de Ingredientes">
+			<ingredient id="1">
+				<name>Arroz</name>
+				<quantity unit="cups">4</quantity>
+				<description>Arroz para el Pinto</description>
+			</ingredient>
+			<ingredient id="2">
+				<name>Frijoles</name>
+				<quantity unit="cups">1.5</quantity>
+				<description>Frijoles para el Pinto</description>
+				<nutricional-info>
+					<grams>15</grams>
+					<calories unit="gr">15</calories>
+					<fat unit="gr">15</fat>
+					<protein unit="gr">15</protein>
+					<carb unit="gr">15</carb>
+					<sodium unit="mg">15</sodium>
+					<other name="otros" unit="kg">Otros</other>
+				</nutricional-info>
+				<brand>Marca Don Pedro</brand>
+			</ingredient>
+			<ingredient id="3">
+				<name>Aceite</name>
+				<quantity unit="cups">0.5</quantity>
+				<description>Natural</description>
+			</ingredient>
+			<ingredient id="4">
+				<name>Sal</name>
+				<quantity unit="ts">1</quantity>
+			</ingredient>
+			<ingredient id="5">
+				<name>Chile Dulce</name>
+				<quantity unit="cups">Chile dulce</quantity>
+				<description>Chile dulce picado</description>
+			</ingredient>
+		</ingredients>
+		<ingredients id="2" title="">
+			<ingredient id="8">
+				<name>Cebolla</name>
+				<quantity unit="cups"></quantity>
+				<description>Cebolla picada</description>
+			</ingredient>
+		</ingredients>
+		<equipments>
+			<equipment id="1">Sarten</equipment>
+			<equipment id="2"></equipment>
+			<equipment id="3"></equipment>
+			<equipment id="4"></equipment>
+		</equipments>
+		<directions>
+			<direction title="Preparation">
+				<step>Caliente el sarten</step>
+				<step>Coloque el chile dulce y la cebolla</step>
+				<step>Fria durante 4 minutos revolviendo </step>
+				<step>Coloque el arroz y los frijoles</step>
+			</direction>
+			<direction title="Serving">
+				<step>Sirve caliente</step>
+				<step>Disfrute</step>
+			</direction>
+		</directions>
+		<notes>Esta es una receta</notes>
+	</recipe>
+</recipe-dim>
