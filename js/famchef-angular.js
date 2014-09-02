@@ -4,6 +4,7 @@ FamChefMaster.controller("MainController", function($scope, $http) {
   $http.get('data/recipes.json').
     success(function(data, status, headers, config) {
       $scope.recipes = data;
+      console.log($scope.recipes);
     }).
     error(function(data, status, headers, config) {
       // log error
@@ -77,5 +78,7 @@ FamChefMaster.controller('MainController', function($scope) {
   	'calories' : '8',
   	'other' : 'Other data'  	
   }
-  ]
+  ];
+  //$scope.meals=$scope.recipes;
+  //console.log($scope.meals);
 });

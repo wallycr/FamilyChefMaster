@@ -1,5 +1,5 @@
-{
-  "recipe-dim": {
+[{
+  "recipes": {
     "head": {
       "meta": [
         {
@@ -203,4 +203,4 @@
       "notes": "Esta es una receta"
     }
   }
-}
+}]
