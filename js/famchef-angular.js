@@ -1,18 +1,16 @@
 var FamChefMaster = angular.module('FamChefMaster', []);
+var recipes;
 
-FamChefMaster.controller("MainController", function($scope, $http) {
+FamChefMaster.controller('MainController', function($scope, $http) {
   $http.get('data/recipes.json').
     success(function(data, status, headers, config) {
-      $scope.recipes = data;
-      console.log($scope.recipes);
+      $scope.recipe_list = data;
+      console.log($scope.recipe_list);
     }).
     error(function(data, status, headers, config) {
-      // log error
+      console.log("Error");
     });
-});
 
-
-FamChefMaster.controller('MainController', function($scope) {
   $scope.days = [
     {
   		'name' : 'Domingo',
@@ -79,6 +77,4 @@ FamChefMaster.controller('MainController', function($scope) {
   	'other' : 'Other data'  	
   }
   ];
-  //$scope.meals=$scope.recipes;
-  //console.log($scope.meals);
 });
