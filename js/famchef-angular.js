@@ -1,5 +1,5 @@
 var FamChefMaster = angular.module('FamChefMaster', [])
-.factory('Factories', function($http){
+.factory('Factories', function($scope, $http){
       var days = [
         {
           'name' : 'Domingo',
@@ -78,10 +78,12 @@ var FamChefMaster = angular.module('FamChefMaster', [])
           return meals;
         }
 
+        $scope.recipes = [];
+
         factory.getRecipies = function($scope, $http) {
-          $http.get('data/recipes.json').
+          $http.get('/data/recipes.json').
             success(function(data, status, headers, config) {
-              return data;
+              $scope.recipes = data;
               // console.log($scope.recipes);
             }).
             error(function(data, status, headers, config) {
@@ -91,10 +93,17 @@ var FamChefMaster = angular.module('FamChefMaster', [])
       return factory;
 
 })
-.controller('MainController', function($scope, Factories) {
+.controller('MainController', function($scope, $http, Factories) {
   $scope.days = Factories.getDays();
-  $scope.meals = Factories.getRecipies();
-});
+  //$scope.meals = Factories.getRecipies();
+
+  $scope.meals = [];
+  $http.get('/data/recipes.json').success(function(data) { 
+      console.log("success!");
+      $scope.meals = data.meals;
+          console.log(data.meals);
+      });   
+  });
 
 var controllers = {};
 var factories = {};
