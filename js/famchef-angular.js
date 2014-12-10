@@ -106,4 +106,3 @@ function init(){
 }
 
 //$scope.days = $scope.Factories.getDays();
-
