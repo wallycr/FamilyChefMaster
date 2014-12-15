@@ -73,7 +73,7 @@
 					<div class="col-lg-4">
 				        <div class="bs-component">
 				          <ul class="list-group">
-				            <li ng-repeat="meal in recipe_list" class="list-group-item" draggable="true" ondragstart="drag(event)"  id="drag{{$index}}">
+				            <li ng-repeat="meal in recipes" class="list-group-item" draggable="true" ondragstart="drag(event)"  id="drag{{$index}}">
 				              <span class="badge">{{meal.calories}}</span>
 				              	{{meal.name}}
 				            </li>
