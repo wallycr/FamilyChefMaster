@@ -1,5 +1,5 @@
 var FamChefMaster = angular.module('FamChefMaster', [])
-.factory('Factories', function($scope, $http){
+.factory('Factories', function(){
       var days = [
         {
           'name' : 'Domingo',
@@ -78,40 +78,50 @@ var FamChefMaster = angular.module('FamChefMaster', [])
           return meals;
         }
 
-        $scope.recipes = [];
-
-        factory.getRecipies = function($scope, $http) {
-          $http.get('/data/recipes.json').
-            success(function(data, status, headers, config) {
-              $scope.recipes = data;
-              // console.log($scope.recipes);
-            }).
-            error(function(data, status, headers, config) {
-              // log error
-            });
-        }
       return factory;
 
 })
-.controller('MainController', function($scope, $http, Factories) {
+.controller('MainController', function($scope, Factories, Recipes) {
   $scope.days = Factories.getDays();
-  //$scope.meals = Factories.getRecipies();
+  //$scope.meals = Factories.getMeals();
+  $scope.recipeList = Recipes.getRecipes();
 
-  $scope.meals = [];
-  $http.get('/data/recipes.json').success(function(data) { 
-      console.log("success!");
-      $scope.meals = data.meals;
-          console.log(data.meals);
-      });   
-  });
+  //$scope.meals = [];
+ 
+});
 
-var controllers = {};
-var factories = {};
+FamChefMaster.factory('Recipes', function($http){
+
+  var localRecipes=[];
+
+    $http.get('recipes.json').
+      success(function(data, status, headers, config) {
+        //$scope.recipes = data;
+        localRecipes =data;
+        console.log(localRecipes);
+      }).
+      error(function(data, status, headers, config) {
+        // log error
+      });
+
+  var factory = {};
+
+  factory.getRecipes = function(){
+    return localRecipes;
+  }
+
+  return factory;
+
+
+});
+
+//var controllers = {};
+//var factories = {};
 
 //init();
 
-function init(){
+//function init(){
   //$scope.days = FamChefMaster.Factories.getDays();
-}
+//}
 
 //$scope.days = $scope.Factories.getDays();
