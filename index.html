@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-ng-app="FamChefMaster">
 <head>
 	<meta charset="UTF-8">
 	<title>Family Chef Master</title>
@@ -59,7 +59,7 @@
         </div>
       </div>
     </div>
-	<div class="container" ng-app="FamChefMaster" ng-controller="MainController">
+	<div class="container" data-ng-controller="MainController">
 		<div id="banner" class="page-header">
 	        <div class="row">
 	          <div class="col-lg-6">
@@ -73,15 +73,16 @@
 					<div class="col-lg-4">
 				        <div class="bs-component">
 				          <ul class="list-group">
-				            <li ng-repeat="meal in recipes" class="list-group-item" draggable="true" ondragstart="drag(event)"  id="drag{{$index}}">
-				              <span class="badge">{{meal.calories}}</span>
-				              	{{meal.name}}
+				            <li data-ng-repeat="meal in meals" class="list-group-item" draggable="true" ondragstart="drag(event)"  id="drag{{$index}}">
+				                <span class="badge">{{meal.calories}}</span>
+				              	{{meal.title}}
+				              	<div class="descript">{{meal.description}}</div>
 				            </li>
 				          </ul>
 				        </div>
 				    </div>
 					<div id="rightPanel" class="col-lg-8">
-						<div ng-repeat="day in days" class="row day {{day.name}}">
+						<div data-ng-repeat="day in days" class="row day {{day.name}}">
 							<h4>{{day.name}}</h4> 
 							<div class="col-lg-4">
 								<div class="meal breakfast panel panel-info">
