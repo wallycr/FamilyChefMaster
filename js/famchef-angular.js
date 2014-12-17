@@ -213,6 +213,10 @@ var FamChefMaster = angular.module('FamChefMaster', [])
           return meals;
         }
 
+      return factory;
+
+})
+.controller('MainController', function($scope, Factories, Recipes) {
         //$scope.recipes = [];
 
         /*factory.getRecipies = function() {
@@ -234,15 +238,33 @@ var FamChefMaster = angular.module('FamChefMaster', [])
   $scope.days = Factories.getDays();
   $scope.meals = Factories.getMeals();
 
+  //$scope.meals = Factories.getMeals();
+  $scope.recipeList = Recipes.getRecipes();
 
-//var controllers = {};
-//var factories = {};
+  //$scope.meals = [];
+ 
+});
 
-//init();
+FamChefMaster.factory('Recipes', function($http){
 
-//function init(){
-  //$scope.days = FamChefMaster.Factories.getDays();
-//}
+  var localRecipes=[];
 
-//$scope.days = $scope.Factories.getDays();
-})
+    $http.get('recipes.json').
+      success(function(data, status, headers, config) {
+        //$scope.recipes = data;
+        localRecipes =data;
+        console.log(localRecipes);
+      }).
+      error(function(data, status, headers, config) {
+        // log error
+      });
+
+  var factory = {};
+
+  factory.getRecipes = function(){
+    return localRecipes;
+  }
+
+  return factory;
+
+});

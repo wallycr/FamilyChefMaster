@@ -6,7 +6,7 @@
 	<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 	<script type="text/javascript" src="js/angular.min.js"></script>
 	<script type="text/javascript" src="js/famchef-angular.js"></script>
-	<!--<script type="text/javascript" src="js/bootstrap.min.js"></script>-->
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/bootstrap-responsive.min.css">
 	<link rel="stylesheet" href="css/main.css">
@@ -73,10 +73,16 @@
 					<div class="col-lg-4">
 				        <div class="bs-component">
 				          <ul class="list-group">
+<<<<<<< HEAD
 				            <li data-ng-repeat="meal in meals" class="list-group-item" draggable="true" ondragstart="drag(event)"  id="drag{{$index}}">
 				                <span class="badge">{{meal.calories}}</span>
 				              	{{meal.title}}
 				              	<div class="descript">{{meal.description}}</div>
+=======
+				            <li ng-repeat="recipe in recipeList.recipes" class="list-group-item" draggable="true" ondragstart="drag(event)"  id="drag{{$index}}">
+				              <span class="badge">{{recipe.calories}}</span>
+				              	{{recipe.title}}
+>>>>>>> 221586947a4fc8f747844781ece090bb966ad841
 				            </li>
 				          </ul>
 				        </div>
