@@ -1,5 +1,9 @@
 var FamChefMaster = angular.module('FamChefMaster', [])
+<<<<<<< HEAD
 .factory('Factories', function(){
+=======
+.factory('Factories', ['$route','$http', function($http){
+>>>>>>> 4ea956358e0a4084f9f4c381e56d991d5932ee35
       var days = [
         {
           'name' : 'Domingo',
@@ -78,10 +82,31 @@ var FamChefMaster = angular.module('FamChefMaster', [])
           return meals;
         }
 
+<<<<<<< HEAD
       return factory;
 
 })
 .controller('MainController', function($scope, Factories, Recipes) {
+=======
+        //$scope.recipes = [];
+
+        factory.getRecipies = function() {
+          var recipes;
+          this.$http.get('recipes.json').
+            success(function(data, status, headers, config) {
+              recipes = data;
+              // console.log($scope.recipes);
+            }).
+            error(function(data, status, headers, config) {
+              // log error
+            });
+            return recipes;
+        }
+      return factory;
+
+}])
+.controller('MainController', function($scope, $http, Factories) {
+>>>>>>> 4ea956358e0a4084f9f4c381e56d991d5932ee35
   $scope.days = Factories.getDays();
   //$scope.meals = Factories.getMeals();
   $scope.recipeList = Recipes.getRecipes();
@@ -113,7 +138,17 @@ FamChefMaster.factory('Recipes', function($http){
   return factory;
 
 
+<<<<<<< HEAD
 });
+=======
+ $scope.recipes = Factories.getRecipies();
+ /* $http.get('recipes.json').success(function(data) { 
+      console.log("success!");
+      $scope.recipes = data.meals;
+          console.log(data.meals);
+      });   */
+  });
+>>>>>>> 4ea956358e0a4084f9f4c381e56d991d5932ee35
 
 //var controllers = {};
 //var factories = {};
